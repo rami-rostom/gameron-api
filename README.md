@@ -5,12 +5,11 @@
 Gameron API is a RESTful API designed to support the Gameron app. It provides endpoints mainly for user datas.
 <br />
 
-Built with TypeScript, Node.js, Express, PostgreSQL and Prisma, Gameron API ensures efficient and reliable data handling for the app.
+Built with Node.js, Express, PostgreSQL and Prisma, Gameron API ensures efficient and reliable data handling for the app.
 <br />
 
 ## :robot: Stack
 
-- [TypeScript](https://www.typescriptlang.org/) : for type safety and enhanced development experience.
 - [Node.js](https://nodejs.org/en) : server-side JavaScript runtime environment.
 - [Express](https://expressjs.com/) : web application framework for Node.js, simplifying API development.
 - [PostgreSQL](https://www.postgresql.org/) : open-source relational database managment system.

@@ -44,28 +44,10 @@ const controller = {
 
       const { email, username, password, confirmation } = req.body;
 
-      // if (!email || !username || !password) {
-      //   return res
-      //     .status(400)
-      //     .json({ error: "Missing parameter(s)." });
-      // }
-
-      if (!email) {
+      if (!email || !username || !password) {
         return res
           .status(400)
-          .json({ error: "Missing email parameter(s)." });
-      }
-
-      if (!username) {
-        return res
-          .status(400)
-          .json({ error: "Missing username parameter(s)." });
-      }
-
-      if (!password) {
-        return res
-          .status(400)
-          .json({ error: "Missing password parameter(s)." });
+          .json({ error: "Missing parameter(s)." });
       }
 
       if (password !== confirmation) {
