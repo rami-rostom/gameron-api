@@ -10,8 +10,8 @@ datasource db {
 model user {
   id            Int      @id @default(autoincrement())
   username      String   @unique
-  username_slug String?  @unique
-  email         String?  @unique
-  password      String?
-  is_admin      Boolean? @default(false)
+  username_slug String   @unique
+  email         String   @unique
+  password      String
+  is_admin      Boolean  @default(false)
 }
