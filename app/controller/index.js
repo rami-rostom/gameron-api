@@ -1,4 +1,5 @@
 const userController = require('./user');
 const loginController = require('./login');
+const gameController = require('./game');
 
-module.exports = { userController, loginController };
+module.exports = { userController, loginController, gameController };
