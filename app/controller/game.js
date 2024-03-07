@@ -2,6 +2,23 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const controller = {
+  getUserFavoriteGames: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const userGames = await prisma.games.findMany({
+        where: {
+          userId: Number(id),
+        }
+      })
+
+      res.status(200).json(userGames);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   updateGameFavorite: async (req, res) => {
     try {
       const { userId, gameId } = req.body;

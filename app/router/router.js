@@ -13,6 +13,7 @@ router.post('/register', loginController.handleRegister);
 router.post('/login', loginController.handleLogin);
 
 // GAME
+router.get('/games/user/:id', gameController.getUserFavoriteGames);
 router.patch('/game/favorite', gameController.updateGameFavorite);
 
 module.exports = router;
