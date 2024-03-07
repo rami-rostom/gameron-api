@@ -14,4 +14,12 @@ model user {
   email         String   @unique
   password      String
   is_admin      Boolean  @default(false)
+  games         games[]
+}
+
+model games {
+  id            Int      @id @default(autoincrement())
+  user          user     @relation(fields: [userId], references: [id])
+  userId        Int
+  gameId        Int
 }
