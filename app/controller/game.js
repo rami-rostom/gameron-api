@@ -6,7 +6,7 @@ const controller = {
     try {
       const { id } = req.params;
 
-      const userGames = await prisma.games.findMany({
+      const userGames = await prisma.game.findMany({
         where: {
           userId: Number(id),
         }
@@ -21,7 +21,9 @@ const controller = {
 
   updateGameFavorite: async (req, res) => {
     try {
-      const { userId, gameId } = req.body;
+      const {
+        userId, gameId, name, slug, released, rating, background_image
+      } = req.body;
 
       const user = await prisma.user.findUnique({
         where: {
@@ -36,7 +38,7 @@ const controller = {
       }
 
       // Check if game is already liked by the user
-      const isGameFavorite = await prisma.games.findFirst({
+      const isGameFavorite = await prisma.game.findFirst({
         where: {
           userId,
           gameId,
@@ -45,7 +47,7 @@ const controller = {
     
       // If true, the game is remove from favorites
       if (isGameFavorite) {
-        await prisma.games.delete({
+        await prisma.game.delete({
           where: {
             id: isGameFavorite.id
           },
@@ -56,12 +58,17 @@ const controller = {
         .json({ message: "Game successfully removed from favorites." });
       } else {
         // If false, the game is add to favorites
-        await prisma.games.create({
+        await prisma.game.create({
           data: {
             user: {
               connect: { id: userId },
             },
             gameId,
+            name,
+            slug,
+            released,
+            rating,
+            background_image
           },
         });
   

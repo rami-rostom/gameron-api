@@ -14,12 +14,17 @@ model user {
   email         String   @unique
   password      String
   is_admin      Boolean  @default(false)
-  games         games[]
+  game          game[]
 }
 
-model games {
-  id            Int      @id @default(autoincrement())
-  user          user     @relation(fields: [userId], references: [id])
-  userId        Int
-  gameId        Int
+model game {
+  id                  Int      @id @default(autoincrement())
+  user                user     @relation(fields: [userId], references: [id])
+  userId              Int
+  gameId              Int
+  name                String
+  slug                String
+  released            String
+  rating              Float
+  background_image    String
 }
